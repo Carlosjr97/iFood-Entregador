@@ -1,0 +1,51 @@
+.history-panel {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.panel-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  h3 {
+    margin: 0;
+  }
+}
+
+.sessions-table,
+.ranking-table {
+  width: 100%;
+  background: transparent;
+}
+
+.result-chip {
+  padding: 0.15rem 0.6rem;
+  border-radius: 999px;
+  font-size: 0.75rem;
+  font-weight: 600;
+}
+
+.result-passed {
+  background: rgba(46, 204, 113, 0.2);
+  color: #2ecc71;
+}
+
+.result-failed {
+  background: rgba(231, 76, 60, 0.2);
+  color: #e74c3c;
+}
+
+.result-pending {
+  background: rgba(241, 196, 15, 0.2);
+  color: #f1c40f;
+}
+
+.ranking-title {
+  margin-top: 1rem;
+}
+
+.empty {
+  opacity: 0.7;
+}

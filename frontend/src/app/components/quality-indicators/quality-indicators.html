@@ -1,0 +1,33 @@
+<div class="quality-panel">
+  <div class="status-banner" [class]="'status-' + status">
+    <mat-icon>{{ statusIcon }}</mat-icon>
+    <span>{{ statusMessage }}</span>
+  </div>
+
+  <div class="score-badge" [class]="'level-' + overallLevel">
+    <span class="score-value">{{ analysis?.score ?? 0 }}</span>
+    <span class="score-label">SCORE</span>
+  </div>
+
+  @if (analysis?.faceDetected) {
+    <div class="indicators-grid">
+      @for (indicator of indicators; track indicator.label) {
+        <mat-card class="indicator-card" [class]="'level-' + indicator.level">
+          <span class="indicator-dot"></span>
+          <div class="indicator-body">
+            <span class="indicator-label">{{ indicator.label }}</span>
+            <span class="indicator-value">{{ indicator.value }}</span>
+          </div>
+        </mat-card>
+      }
+    </div>
+  }
+
+  @if (analysis && analysis.warnings.length > 1) {
+    <ul class="warnings-list">
+      @for (warning of analysis.warnings.slice(1); track warning) {
+        <li>{{ warning }}</li>
+      }
+    </ul>
+  }
+</div>

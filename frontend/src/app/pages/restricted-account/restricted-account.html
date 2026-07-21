@@ -1,0 +1,41 @@
+<div class="screen-wrapper">
+  <header class="screen-header">
+    <img class="avatar" src="/eu.jpg" alt="Foto do usuário" />
+    <div class="status-badge" [class.available]="isAvailable()">
+      <mat-icon>{{ isAvailable() ? 'check_circle' : 'warning' }}</mat-icon>
+      <span>{{ isAvailable() ? 'Disponível' : 'Restrito' }}</span>
+    </div>
+    <button type="button" class="icon-button" aria-label="Notificações">
+      <mat-icon>notifications_none</mat-icon>
+    </button>
+  </header>
+
+  <div class="warning-banner" [class.searching]="isAvailable()">
+    <mat-icon>{{ isAvailable() ? 'search' : 'warning_amber' }}</mat-icon>
+    <span>{{ isAvailable() ? 'Estamos procurando rotas pra você' : 'Existem restrições na sua conta' }}</span>
+  </div>
+
+  <div class="fake-map">
+    <div class="map-region-label">VILA SEIXAS</div>
+    <div class="map-marker">
+      <mat-icon>two_wheeler</mat-icon>
+    </div>
+  </div>
+
+  @if (!isAvailable()) {
+    <main class="main-content">
+      <h1 class="main-title">Pra conseguir ficar disponível de novo, resolva as restrições abaixo</h1>
+
+      <section class="restrictions-section">
+        <h2 class="section-subtitle">Restrições</h2>
+
+        <app-restriction-item
+          icon="block"
+          title="Reconhecimento facial"
+          description="Por segurança, tire uma foto de rosto para verificarmos sua identidade."
+          (resolve)="goToFacialRecognition()"
+        ></app-restriction-item>
+      </section>
+    </main>
+  }
+</div>

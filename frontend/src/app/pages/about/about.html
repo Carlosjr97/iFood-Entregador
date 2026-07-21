@@ -1,0 +1,41 @@
+<section class="about-page">
+  <h1>Arquitetura</h1>
+  <p>O sistema é dividido em três camadas independentes, cada uma com uma responsabilidade clara:</p>
+
+  <div class="architecture-diagram">
+    <div class="layer">
+      Angular 20 + Material
+      <span>Captura de webcam, indicadores em tempo real</span>
+    </div>
+    <div class="arrow">↓ REST + WebSocket</div>
+    <div class="layer">
+      Spring Boot 3 (Java 21)
+      <span>Usuários, sessões, métricas, orquestração</span>
+    </div>
+    <div class="arrow">↓ REST</div>
+    <div class="layer">
+      FastAPI + OpenCV + MediaPipe (Python 3.12)
+      <span>Análise facial e prova de vida</span>
+    </div>
+  </div>
+
+  <mat-card>
+    <h3>Tecnologias</h3>
+    <ul>
+      <li><strong>Backend:</strong> Java 21, Spring Boot 3, Spring Data JPA, PostgreSQL, WebSocket</li>
+      <li><strong>Frontend:</strong> Angular 20, Angular Material, RxJS</li>
+      <li><strong>Visão computacional:</strong> Python 3.12, FastAPI, OpenCV, MediaPipe, NumPy</li>
+      <li><strong>Infraestrutura:</strong> Docker, Docker Compose</li>
+    </ul>
+  </mat-card>
+
+  <mat-card>
+    <h3>Por que não simulamos autenticação</h3>
+    <p>
+      Este assistente não substitui nem contorna sistemas de reconhecimento facial — ele apenas avalia a
+      qualidade técnica da captura (iluminação, nitidez, enquadramento, estabilidade) e conduz uma prova de
+      vida baseada em geometria real do rosto, reduzindo falsos negativos causados por más condições de
+      captura antes que o usuário envie a imagem para validação em outro sistema.
+    </p>
+  </mat-card>
+</section>

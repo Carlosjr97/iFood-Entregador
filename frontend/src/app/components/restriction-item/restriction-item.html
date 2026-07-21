@@ -1,0 +1,10 @@
+<div class="restriction-card">
+  <span class="restriction-icon">
+    <mat-icon>{{ icon }}</mat-icon>
+  </span>
+  <div class="restriction-body">
+    <h3 class="restriction-title">{{ title }}</h3>
+    <p class="restriction-description">{{ description }}</p>
+    <button type="button" class="resolve-link" (click)="resolve.emit()">{{ actionLabel }}</button>
+  </div>
+</div>

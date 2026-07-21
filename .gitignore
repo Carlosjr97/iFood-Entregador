@@ -1,0 +1,30 @@
+# --- Backend (Java/Maven) ---
+backend/target/
+backend/.mvn/
+backend/*.iml
+backend/.idea/
+
+# --- Vision service (Python) ---
+vision-service/__pycache__/
+vision-service/**/__pycache__/
+vision-service/.pytest_cache/
+vision-service/venv/
+vision-service/.venv/
+vision-service/*.egg-info/
+
+# --- Frontend (Angular/Node) ---
+frontend/node_modules/
+frontend/dist/
+frontend/.angular/
+frontend/coverage/
+
+# --- Docker / env ---
+.env
+*.env.local
+
+# --- IDE / OS ---
+.vscode/
+.idea/
+*.log
+.DS_Store
+Thumbs.db

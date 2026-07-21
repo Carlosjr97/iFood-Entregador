@@ -1,0 +1,62 @@
+.restriction-card {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.9rem;
+  background: #ffffff;
+  border-radius: 16px;
+  padding: 1.1rem;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
+}
+
+.restriction-icon {
+  flex-shrink: 0;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: #fdecea;
+  color: #e53935;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  mat-icon {
+    font-size: 20px;
+    width: 20px;
+    height: 20px;
+  }
+}
+
+.restriction-body {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  min-width: 0;
+}
+
+.restriction-title {
+  margin: 0;
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: #1a1a1a;
+}
+
+.restriction-description {
+  margin: 0;
+  font-size: 0.82rem;
+  color: #6b6b6b;
+  line-height: 1.45;
+}
+
+.resolve-link {
+  align-self: flex-start;
+  margin-top: 0.15rem;
+  background: none;
+  border: none;
+  padding: 0;
+  color: #e53935;
+  font-weight: 700;
+  font-size: 0.85rem;
+  cursor: pointer;
+  font-family: inherit;
+}

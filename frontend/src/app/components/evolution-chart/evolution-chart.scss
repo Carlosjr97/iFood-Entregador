@@ -1,0 +1,86 @@
+:host {
+  display: block;
+}
+
+.evolution-chart {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+svg {
+  width: 100%;
+  height: auto;
+}
+
+.grid-line {
+  stroke: rgba(255, 255, 255, 0.08);
+  stroke-width: 1;
+}
+
+.grid-label {
+  fill: rgba(255, 255, 255, 0.45);
+  font-size: 9px;
+}
+
+.score-line {
+  fill: none;
+  stroke: #4dabf7;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.score-dot {
+  fill: #4dabf7;
+  stroke: #1b1f27;
+  stroke-width: 2;
+  cursor: pointer;
+
+  &.hovered {
+    r: 6;
+  }
+}
+
+.crosshair {
+  stroke: rgba(255, 255, 255, 0.3);
+  stroke-width: 1;
+  stroke-dasharray: 4 4;
+}
+
+.empty {
+  opacity: 0.7;
+  text-align: center;
+  padding: 2rem 0;
+}
+
+.tooltip {
+  font-size: 0.8rem;
+  display: flex;
+  gap: 0.5rem;
+  justify-content: center;
+  opacity: 0.85;
+
+  &.latest {
+    opacity: 0.6;
+  }
+}
+
+@media (prefers-color-scheme: light) {
+  .score-line,
+  .score-dot {
+    stroke: #1971c2;
+  }
+
+  .score-dot {
+    fill: #1971c2;
+  }
+
+  .grid-line {
+    stroke: rgba(0, 0, 0, 0.08);
+  }
+
+  .grid-label {
+    fill: rgba(0, 0, 0, 0.45);
+  }
+}

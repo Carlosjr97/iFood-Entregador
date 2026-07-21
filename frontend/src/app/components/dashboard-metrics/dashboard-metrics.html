@@ -1,0 +1,40 @@
+<div class="dashboard-metrics">
+  <div class="stat-tiles">
+    <mat-card class="stat-tile">
+      <span class="stat-value">{{ stats?.totalSessions ?? 0 }}</span>
+      <span class="stat-label">Sessões totais</span>
+    </mat-card>
+    <mat-card class="stat-tile">
+      <span class="stat-value">{{ stats?.averageScore ?? 0 }}</span>
+      <span class="stat-label">Qualidade média</span>
+    </mat-card>
+    <mat-card class="stat-tile">
+      <span class="stat-value">{{ formatDuration(stats?.averageDurationSeconds) }}</span>
+      <span class="stat-label">Tempo médio</span>
+    </mat-card>
+  </div>
+
+  <mat-card class="panel">
+    <h3>Evolução da qualidade</h3>
+    <app-evolution-chart [data]="stats?.evolution ?? []"></app-evolution-chart>
+  </mat-card>
+
+  <mat-card class="panel">
+    <h3>Falhas por categoria</h3>
+    @if (categoryEntries.length === 0) {
+      <p class="empty">Sem falhas registradas ainda.</p>
+    } @else {
+      <div class="category-bars">
+        @for (entry of categoryEntries; track entry.label) {
+          <div class="category-row">
+            <span class="category-label">{{ entry.label }}</span>
+            <div class="bar-track">
+              <div class="bar-fill" [style.width.%]="entry.percentage"></div>
+            </div>
+            <span class="category-count">{{ entry.count }}</span>
+          </div>
+        }
+      </div>
+    }
+  </mat-card>
+</div>

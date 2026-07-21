@@ -1,0 +1,53 @@
+<div class="evolution-chart">
+  @if (points().length === 0) {
+    <p class="empty">Ainda não há sessões concluídas suficientes para exibir a evolução.</p>
+  } @else {
+    <svg
+      [attr.viewBox]="viewBox"
+      preserveAspectRatio="xMidYMid meet"
+      role="img"
+      aria-label="Evolução da pontuação média por dia"
+    >
+      @for (value of gridLines; track value) {
+        <line
+          class="grid-line"
+          [attr.x1]="padding.left"
+          [attr.x2]="width - padding.right"
+          [attr.y1]="gridY(value)"
+          [attr.y2]="gridY(value)"
+        ></line>
+        <text class="grid-label" [attr.x]="4" [attr.y]="gridY(value) + 3">{{ value }}</text>
+      }
+
+      <path class="score-line" [attr.d]="linePath()"></path>
+
+      @for (point of points(); track point.date; let i = $index) {
+        <circle
+          class="score-dot"
+          [class.hovered]="hoverIndex() === i"
+          [attr.cx]="point.x"
+          [attr.cy]="point.y"
+          r="4"
+          (mouseenter)="onHover(i)"
+          (mouseleave)="clearHover()"
+        ></circle>
+      }
+
+      @if (hoverPoint; as hp) {
+        <line class="crosshair" [attr.x1]="hp.x" [attr.x2]="hp.x" [attr.y1]="padding.top" [attr.y2]="height - padding.bottom"></line>
+      }
+    </svg>
+
+    @if (hoverPoint; as hp) {
+      <div class="tooltip">
+        <strong>{{ hp.date }}</strong>
+        <span>Média: {{ hp.averageScore }} · {{ hp.sessionsCount }} sessão(ões)</span>
+      </div>
+    } @else {
+      <div class="tooltip latest">
+        <strong>Última leitura</strong>
+        <span>{{ points()[points().length - 1].date }} · Média {{ points()[points().length - 1].averageScore }}</span>
+      </div>
+    }
+  }
+</div>

@@ -1,0 +1,31 @@
+<div class="liveness-panel">
+  @if (!running && !result) {
+    <p class="instruction">Prova de vida: siga as instruções para confirmar que é uma pessoa real.</p>
+    <button mat-raised-button color="primary" (click)="start()">Iniciar prova de vida</button>
+  }
+
+  @if (running) {
+    <p class="instruction pulsing">{{ currentInstruction }}</p>
+    <mat-progress-bar mode="determinate" [value]="progress"></mat-progress-bar>
+    <ol class="steps-list">
+      @for (step of steps; track step.phase; let i = $index) {
+        <li [class.active]="i === currentStepIndex" [class.done]="i < currentStepIndex">
+          {{ step.instruction }}
+        </li>
+      }
+    </ol>
+  }
+
+  @if (!running && result) {
+    <div class="result" [class.success]="result.completed" [class.failure]="!result.completed">
+      <p>
+        {{
+          result.completed
+            ? 'Prova de vida concluída com sucesso.'
+            : 'Não foi possível confirmar a prova de vida. Tente novamente.'
+        }}
+      </p>
+      <button mat-stroked-button (click)="start()">Repetir</button>
+    </div>
+  }
+</div>

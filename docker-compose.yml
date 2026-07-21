@@ -1,0 +1,65 @@
+services:
+  postgres:
+    image: postgres:16-alpine
+    environment:
+      POSTGRES_DB: biometric_capture
+      POSTGRES_USER: biometric
+      POSTGRES_PASSWORD: biometric
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    ports:
+      # Host port 5433 avoids clashing with a local Postgres install on 5432;
+      # containers still talk to each other on the internal port 5432.
+      - "5433:5432"
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U biometric -d biometric_capture"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+    networks:
+      - biometric-net
+
+  vision-service:
+    build: ./vision-service
+    environment:
+      VISION_LOG_LEVEL: INFO
+      VISION_CORS_ORIGINS: '["*"]'
+    ports:
+      - "8000:8000"
+    networks:
+      - biometric-net
+
+  backend:
+    build: ./backend
+    environment:
+      DB_HOST: postgres
+      DB_PORT: "5432"
+      DB_NAME: biometric_capture
+      DB_USER: biometric
+      DB_PASSWORD: biometric
+      VISION_SERVICE_URL: http://vision-service:8000
+    ports:
+      - "8080:8080"
+    depends_on:
+      postgres:
+        condition: service_healthy
+      vision-service:
+        condition: service_healthy
+    networks:
+      - biometric-net
+
+  frontend:
+    build: ./frontend
+    ports:
+      - "4200:80"
+    depends_on:
+      - backend
+    networks:
+      - biometric-net
+
+volumes:
+  postgres_data:
+
+networks:
+  biometric-net:
+    driver: bridge

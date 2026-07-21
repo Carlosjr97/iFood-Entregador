@@ -1,0 +1,188 @@
+:host {
+  display: block;
+  min-height: 100vh;
+  background: #f5f5f5;
+  font-family: 'Inter', 'Roboto', sans-serif;
+}
+
+.screen-wrapper {
+  max-width: 480px;
+  margin: 0 auto;
+  min-height: 100vh;
+  background: #f5f5f5;
+  display: flex;
+  flex-direction: column;
+}
+
+// --- Cabeçalho ---
+.screen-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  padding: 1rem 1.25rem 0.85rem;
+  background: #ffffff;
+}
+
+.avatar {
+  flex-shrink: 0;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.status-badge {
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+  background: #fbc02d;
+  color: #4a3200;
+  padding: 0.35rem 0.9rem;
+  border-radius: 999px;
+  font-size: 0.8rem;
+  font-weight: 700;
+
+  mat-icon {
+    font-size: 16px;
+    width: 16px;
+    height: 16px;
+  }
+
+  &.available {
+    background: #c8e6c9;
+    color: #1b5e20;
+  }
+}
+
+.icon-button {
+  flex-shrink: 0;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: #333333;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  &:hover {
+    background: rgba(0, 0, 0, 0.04);
+  }
+}
+
+// --- Aviso principal ---
+.warning-banner {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  width: 100%;
+  background: #fff3cd;
+  color: #7a5200;
+  padding: 0.85rem 1.25rem;
+  font-size: 0.85rem;
+  font-weight: 600;
+
+  mat-icon {
+    color: #fbc02d;
+    flex-shrink: 0;
+  }
+
+  &.searching {
+    background: #e8f5e9;
+    color: #1b5e20;
+
+    mat-icon {
+      color: #2e7d32;
+    }
+  }
+}
+
+// --- Mapa ---
+.fake-map {
+  position: relative;
+  height: 30vh;
+  min-height: 180px;
+  max-height: 260px;
+  background-color: #e9e9ea;
+  background-image: url('/maps.png');
+  background-size: cover;
+  background-position: center;
+  overflow: hidden;
+}
+
+.map-region-label {
+  position: absolute;
+  top: 12px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #ffffff;
+  padding: 0.3rem 0.9rem;
+  border-radius: 999px;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  color: #333333;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.12);
+  white-space: nowrap;
+}
+
+.map-marker {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: #e53935;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #ffffff;
+  box-shadow: 0 4px 10px rgba(229, 57, 53, 0.45);
+
+  &::after {
+    content: '';
+    position: absolute;
+    inset: -8px;
+    border-radius: 50%;
+    border: 2px solid rgba(229, 57, 53, 0.35);
+  }
+
+  mat-icon {
+    font-size: 22px;
+    width: 22px;
+    height: 22px;
+  }
+}
+
+// --- Conteúdo principal ---
+.main-content {
+  flex: 1;
+  padding: 1.5rem 1.25rem 2rem;
+}
+
+.main-title {
+  text-align: center;
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: #1a1a1a;
+  line-height: 1.4;
+  margin: 0 0 1.75rem;
+}
+
+.restrictions-section {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.section-subtitle {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: #1a1a1a;
+  margin: 0;
+}

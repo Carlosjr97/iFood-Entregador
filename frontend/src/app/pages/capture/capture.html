@@ -1,0 +1,37 @@
+<section class="capture-page">
+  @if (step() === 'loading') {
+    <div class="loading-state">
+      <mat-spinner diameter="40"></mat-spinner>
+      <p>Preparando a câmera...</p>
+      @if (errorMessage()) {
+        <p class="error">{{ errorMessage() }}</p>
+      }
+    </div>
+  }
+
+  @if (step() === 'capture') {
+    <div class="capture-layout">
+      <app-capture-camera
+        [analysis]="analysis()"
+        (frameCaptured)="onFrameCaptured($event)"
+        (cameraError)="errorMessage.set($event)"
+      ></app-capture-camera>
+
+      <div class="side-panel">
+        <app-quality-indicators [analysis]="analysis()" [stability]="stability()"></app-quality-indicators>
+
+        @if (errorMessage()) {
+          <p class="error">{{ errorMessage() }}</p>
+        }
+      </div>
+    </div>
+  }
+
+  @if (step() === 'result' && finalResult(); as result) {
+    <mat-card class="result-card failed">
+      <h2>Captura reprovada</h2>
+      <p>Pontuação final: {{ result.score }}</p>
+      <button mat-stroked-button (click)="restart()">Nova captura</button>
+    </mat-card>
+  }
+</section>

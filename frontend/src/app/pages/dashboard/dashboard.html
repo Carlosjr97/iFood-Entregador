@@ -1,0 +1,5 @@
+<section class="dashboard-page">
+  <h1>Dashboard</h1>
+  <app-dashboard-metrics [stats]="stats()"></app-dashboard-metrics>
+  <app-history-table [sessions]="sessions()" [ranking]="ranking()" [exportUrl]="exportUrl"></app-history-table>
+</section>

@@ -1,0 +1,30 @@
+:host {
+  display: block;
+  width: 100%;
+  flex: 1 1 320px;
+  min-width: 280px;
+  max-width: 640px;
+}
+
+.camera-wrapper {
+  position: relative;
+  width: 100%;
+  min-height: 240px;
+  aspect-ratio: 4 / 3;
+  border-radius: 16px;
+  overflow: hidden;
+  background: #111;
+}
+
+.camera-video,
+.camera-overlay {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.camera-overlay {
+  pointer-events: none;
+}
