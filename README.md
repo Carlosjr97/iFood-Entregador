@@ -1,14 +1,8 @@
-# Smart Biometric Capture Assistant
+# iFood entregador
 
-Assistente full stack que ajuda um usuário a fazer uma **captura facial de boa qualidade**
-antes de enviá-la para um sistema de validação biométrica. A aplicação analisa brilho,
-contraste, nitidez, enquadramento, distância e estabilidade em tempo real, conduz uma prova de
-vida baseada em geometria real do rosto (MediaPipe Face Mesh + `solvePnP`) e mantém um
-dashboard analítico com histórico, ranking e evolução de qualidade.
-
-> **O que este projeto não faz:** não simula, nem contorna, nem tenta burlar nenhum sistema de
-> autenticação/reconhecimento facial. Ele só avalia a qualidade técnica da imagem e conduz uma
-> prova de vida geométrica, para reduzir falsos negativos de sistemas de validação externos.
+Hoje vim apresentar um projeto pessoal que nasceu de uma dor real de quem entrega pelo iFood.                            O contexto: antes, o iFood não tinha nenhuma forma de certificar que quem estava fazendo a entrega era realmente o titular da conta. Resultado: era comum titulares emprestarem ou até alugarem a conta pra terceiros — você fazia um pedido, no app aparecia "Joana", mas quem chegava era o João. Pra resolver isso, o iFood implementou o reconhecimento facial: todo dia, na primeira entrega da rotina, o app pede a verificação.                                               O problema: o reconhecimento falha com frequência. Eu mesmo já tive dias de precisar tentar 5, 10, até 15 vezes pra conseguir. E o pior não é falhar — é não saber por quê. O app enquadra o rosto, captura, processa... e devolve só um "Vamos tentar novamente" genérico, sem indicar se foi a luz, o enquadramento, a distância ou o quê.               
+O que eu construí: uma interface inspirada no app do entregador iFood, onde o processo de reconhecimento facial analisa em tempo real brilho, nitidez, distância, enquadramento e presença de rosto único — mostrando pro usuário exatamente o que precisa ajustar antes de capturar a imagem, em vez de um erro genérico no final.                                
+Uma sugestão extra pra reduzir ainda mais esse atrito seria incluir uma prova de vida em vídeo (pedindo pra virar o rosto pra direita e pra esquerda), capturando mais detalhes e comparando com a foto do cadastro — reforçando a segurança sem depender só de uma foto estática.                                                 
 
 ## Arquitetura
 
